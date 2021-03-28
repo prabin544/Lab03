@@ -1,23 +1,24 @@
 import React from 'react';
-import HornedBeasts from './HornedBeasts'
+import SelectedBeast from './SelectedBeast'
 import CardColumns from 'react-bootstrap/CardColumns';
 
 class Main extends React.Component {
 
     render() {
-        const { data } = this.props;
+        const { animalArray } = this.props;
 
         return (
             <CardColumns>
-                {data.map((animal, index) => {
+                {animalArray.map((animal, index) => {
                     return (
-                        <HornedBeasts
+                        <SelectedBeast
                             title={animal.title}
                             description={animal.description}
                             imgUrl={animal.image_url}
                             keyword={animal.keyword}
                             horns={animal.horns}
                             key={index}
+                            showFavePic={this.props.showFavePic}
                         />
                     );
                 })}
