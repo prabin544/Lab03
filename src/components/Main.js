@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectedBeast from './SelectedBeast'
 import CardColumns from 'react-bootstrap/CardColumns';
+import HornedBeasts from './HornedBeasts';
 
 class Main extends React.Component {
 
@@ -11,7 +12,7 @@ class Main extends React.Component {
             <CardColumns>
                 {animalArray.map((animal, index) => {
                     return (
-                        <SelectedBeast
+                        <HornedBeasts
                             title={animal.title}
                             description={animal.description}
                             imgUrl={animal.image_url}

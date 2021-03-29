@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import Main from './components/Main';
 import { Modal, Button, Image } from "react-bootstrap";
+import SelectedBeast from './components/SelectedBeast'
 import animalArray from './data.json';
 
 class App extends React.Component{
@@ -14,24 +15,19 @@ class App extends React.Component{
   }
 
   showFavePic = (animal) => {
-    this.setState({
-      isOpen: true,
+    // console.log("clicked")
+    // console.log(animal)
+    this.setState({      
+      isOpen: !this.state.isOpen,
       src: animal,
     })
   }
   render () {
+    console.log(this.state.src)
     return(
       <>
-        <Modal>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><Image src={this.state.src} /></Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-          </Modal.Footer>
-        </Modal>
         <Main animalArray = {animalArray} showFavePic={this.showFavePic}/>
+        <SelectedBeast img={this.state.src}></SelectedBeast>
       </>
     )
   }
