@@ -9,7 +9,7 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isOpen: false,
+      displayModal: false,
       src: 'https://placehold.it/500x100/444',
     }
   }
@@ -18,16 +18,28 @@ class App extends React.Component{
     // console.log("clicked")
     // console.log(animal)
     this.setState({      
-      isOpen: !this.state.isOpen,
       src: animal,
+      displayModal: true
     })
   }
+
+  hideModal = () => {
+    this.setState({displayModal: false})
+  }
+
+  showModal = () => {
+    this.setState({displayModal: true})
+  }
+  
   render () {
-    console.log(this.state.src)
     return(
       <>
         <Main animalArray = {animalArray} showFavePic={this.showFavePic}/>
-        <SelectedBeast img={this.state.src}></SelectedBeast>
+        <SelectedBeast 
+        displayModal ={this.state.displayModal}
+        hideModal={this.hideModal}
+        img={this.state.src} 
+        />
       </>
     )
   }
